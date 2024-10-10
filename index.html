@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<title>opdrachtles25</title>
+<style>
+
+header{
+    background-color:#fcbb0f;
+    height:100px;
+    color:black;
+    text-align: center;
+}
+
+#knop, #knopback {
+    padding-top:20px;
+    text-align: center;
+    
+}
+
+#nextlevel, #previoustlevel {
+    background-color: #e02f2b;
+    color: black;
+    border-radius: 30px;
+    width:200px;
+    height:50px;
+
+}
+
+#knopback{
+    display:none;
+}
+
+h1,h5 {
+    padding-top:30px;
+}
+
+p{
+    font-size: 45px;
+   
+}
+
+#slide1{
+    padding-top:20px;
+    text-align:center;
+    height:500px;
+    width:100%;
+    
+}
+
+#slide2{
+    padding-top:20px;
+    text-align:center;
+    display: none;
+    height:500px;
+    width:100%;
+    
+    
+}
+
+.car1, .car2, .car3{
+    width:200px;
+    height: 50px;
+    position: relative;
+    margin:10px;
+    padding:5px;
+    background-image: url(car1.png);
+    background-position: center;
+    background-size: cover;
+}
+
+.car2{
+    background-image: url(car2.png);
+}
+
+.car3{
+    background-image: url(car3.png);
+}
+
+#flex-container{
+    display:flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+#clickme{
+    background-image: url("pakme.png");
+    background-size: cover;
+    background-position: center;
+    width:350px;
+    height:200px;
+    margin:10px;
+    padding:20px;
+      
+}
+#emoji{
+    background-image:url("");
+    background-size: cover;
+    background-position: center;
+    height:200px;
+    width:350px;
+    margin:10px;
+    padding:20px;
+       
+}
+
+footer{
+    background-color:#fcbb0f;
+    height:100px;
+    justify-content: center; 
+    align-items: center;
+    text-align: center;
+    color:black;
+}
+</style>
+
+<script
+src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script type="text/javascript">
+
+
+    
+        
+
+    $(document).ready(function() {
+         
+
+        $("#nextlevel").click(function() {
+            
+            $("#slide1").slideUp();
+            $("#knop").slideUp();
+
+            $("#slide2").slideDown();
+            $("#knopback").slideDown();
+
+        });
+
+        $("#previoustlevel").click(function() {
+            
+            $("#slide1").slideDown();
+            $("#knop").slideDown();
+
+            $("#slide2").slideUp();
+            $("#knopback").slideUp();
+
+        });
+
+        
+
+        var naam = prompt("Wat is je naam?");
+        
+         
+        if (naam) {
+            $("#myheader").text("Hello " + naam);
+        } else {
+            alert("Je hebt geen naam ingevoerd.");
+        }
+        
+        $("#clickme").hover(function() {
+
+            $("#pakme").hide();
+            $("#clickme").css('background-image', 'url("")');
+         
+            $("#emoji").css('background-image', 'url("pakme2.png")'); 
+        },
+
+        function() {
+            
+            $("#pakme").show();
+            $("#emoji").css('background-image', 'url("")');
+            $("#clickme").css('background-image', 'url("pakme.png")');
+        });
+
+
+        $(".car1, .car2, .car3").hover(function(){
+            var windowWidth = $(window).width();
+            var carWidth = $(this).outerWidth();
+            $(this).animate({left: (windowWidth - carWidth)-100 + "px"},4000);
+           
+        },
+
+        function(){
+                        
+            $(this).animate({ "left" : "0px"},2000);
+                 
+
+        });
+
+       
+    });
+
+</script>
+</head>
+
+<header>
+    <h1 id="myheader">Hello</h1>
+</header>
+
+
+<body>
+
+        
+<div id="slide1">
+
+    <p>Pak me dan, als je kan</p>
+
+    <div id="flex-container">
+        <div id="clickme"></div>
+        <div id="emoji"></div>
+    </div>  
+    
+</div>
+
+<div id="slide2">
+
+    <p>Hover to start the race</p>
+
+    <div  class="car1"></div>
+    <div  class="car2"></div>
+    <div  class="car3"></div>
+
+</div>
+
+<div id="knopback">
+    <input type="button" name="knopback"
+    value="Previous Level" id="previoustlevel">
+</div>
+
+<div id="knop">
+    <input type="button" name="knop"
+    value="Next Level" id="nextlevel">
+</div>
+
+<footer>
+    <h5>© 2024 Adele. Alle rechten voorbehouden</h5>
+</footer>
+
+</body>
+</html>
